@@ -69,6 +69,30 @@ func choca (_ fila2:Int, _ column2:Int) -> Bool{
 }
 
 
+func limpiarLineas (_ fila1:Int) -> Int{
+    var filaIndex3:Int = fila1
+    var columnIndex3:Int = 0
+    var lleno:Bool = true
+    while lleno == true{
+        
+        columnIndex3 = posiciones[filaIndex3]
+        tablero[filaIndex3][columnIndex3] = 0
+        columnIndex3 += 1
+        if columnIndex3 < 4 {
+            lleno = false
+        } else {
+            
+            filaIndex3 -= 1
+            if filaIndex3 < 0 {
+                filaIndex3 = 0
+                columnIndex3 = 0
+            }
+            
+        }
+    }
+    
+    return filaIndex3
+}
 
 
 
@@ -77,10 +101,11 @@ var indexFila:Int = 0
 
 
 while indexFila < 4 {
+    
     puntoMarcado = false
     while puntoMarcado == false {
-        
-        if columnOcupada(colum) == false {
+        print("hola \(colum)")
+        if columnOcupada(colum) == false {//te da un error de out of index (el index daba 4)
             if choca(indexFila, colum) == false {
                 tablero[indexFila][colum] = 1
                 posiciones[indexFila] = colum
@@ -93,7 +118,9 @@ while indexFila < 4 {
             
             if colum == 4{
                 indexFila -= 1
-                
+                //aqui va funcion limpiar filas
+                indexFila = limpiarLineas(indexFila)
+                //colum = 0
             }
             
         }
@@ -105,4 +132,7 @@ while indexFila < 4 {
 }
 
 
-
+print(tablero[0])
+print(tablero[1])
+print(tablero[2])
+print(tablero[3])
