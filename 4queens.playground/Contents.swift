@@ -101,34 +101,45 @@ var indexFila:Int = 0
 
 
 while indexFila < 4 {
-    
+    print("Fila  \(indexFila)")
+    print("///////////////////////////////////////////////")
     puntoMarcado = false
-    while puntoMarcado == false {
-        print("hola \(colum)")
-        if columnOcupada(colum) == false {//te da un error de out of index (el index daba 4)
-            if choca(indexFila, colum) == false {
-                tablero[indexFila][colum] = 1
-                posiciones[indexFila] = colum
-                puntoMarcado = true
+    while colum < 4 {
+        print("Columna  \(colum)")
+        print(" ------------------------------------")
+        if colum < 4 {
+            
+            print("hola \(colum)")
+            if columnOcupada(colum) == false {//te da un error de out of index (el index daba 4)
+                if choca(indexFila, colum) == false {
+                    tablero[indexFila][colum] = 1
+                    posiciones[indexFila] = colum
+                    puntoMarcado = true
+                    colum = 4
+                }
+            }
+            
+            if puntoMarcado == false{
+                colum += 1
+                
+                if colum == 4{
+                    indexFila -= 1
+                    //aqui va funcion limpiar filas
+                    indexFila = limpiarLineas(indexFila)
+                    //colum = 0
+                }
+                
             }
         }
         
-        if puntoMarcado == false{
-            colum += 1
-            
-            if colum == 4{
-                indexFila -= 1
-                //aqui va funcion limpiar filas
-                indexFila = limpiarLineas(indexFila)
-                //colum = 0
-            }
-            
-        }
-        
+        print(tablero[0])
+        print(tablero[1])
+        print(tablero[2])
+        print(tablero[3])
         
     }
     indexFila += 1
-    
+    print("////////////////////////////////////////////////")
 }
 
 
