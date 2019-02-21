@@ -72,8 +72,11 @@ func choca (_ fila2:Int, _ column2:Int) -> Bool{
 
 
 
+var indexFila:Int = 0
 
-for indexFila in  0...3 {
+
+
+while indexFila < 4 {
     puntoMarcado = false
     while puntoMarcado == false {
         
@@ -89,13 +92,15 @@ for indexFila in  0...3 {
             colum += 1
             
             if colum == 4{
-                indexFila -= 1 //no puedes editar indexFila cambia a otro loop
+                indexFila -= 1
+                
             }
             
         }
         
         
     }
+    indexFila += 1
     
 }
 
