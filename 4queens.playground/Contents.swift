@@ -73,24 +73,41 @@ func limpiarLineas (_ fila1:Int) -> Int{
     var filaIndex3:Int = fila1
     var columnIndex3:Int = 0
     var lleno:Bool = true
+    /*print("filaInedex3  \(filaIndex3)")
+    print("columnInedex3  \(columnIndex3)")*/
     while lleno == true{
         
         columnIndex3 = posiciones[filaIndex3]
         tablero[filaIndex3][columnIndex3] = 0
         columnIndex3 += 1
+        
+        print("filaInedex3  \(filaIndex3)")
+        print("columnInedex3  \(columnIndex3)")
+        
         if columnIndex3 < 4 {
             lleno = false
+            
+            print("lleno  \(lleno)")
+            
         } else {
             
             filaIndex3 -= 1
+            
+            print("filaInedex3 no lleno. \(filaIndex3)")
             if filaIndex3 < 0 {
                 filaIndex3 = 0
                 columnIndex3 = 0
+                
+                
+                
+                print("filaInedex3 reiniciado  \(filaIndex3)")
+                print("columnInedex3 reiniciado \(columnIndex3)")
+                
             }
             
         }
     }
-    
+    print("nuevo filaInedex3 \(filaIndex3)")
     return filaIndex3
 }
 
@@ -106,8 +123,9 @@ while indexFila < 4 {
     puntoMarcado = false
     //print("Columna actual  \(colum)")
     while colum < 4 {
-        print("Columna  \(colum)")
+        
         print(" ------------------------------------")
+        print("Columna  \(colum)")
         if colum < 4 {
             
             if columnOcupada(colum) == false {//te da un error de out of index (el index daba 4)
@@ -130,9 +148,9 @@ while indexFila < 4 {
                     indexFila = limpiarLineas(indexFila)
                     print("Index actual despues de borrar  \(indexFila)")
                     //colum = 0
-                }
+                } //else { indexFila += 1 }
                 
-            }
+            }// else {indexFila += 1}
         }
         
         print(tablero[0])
