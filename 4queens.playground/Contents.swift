@@ -102,16 +102,18 @@ var indexFila:Int = 0
 
 while indexFila < 4 {
     print("Fila  \(indexFila)")
-    print("///////////////////////////////////////////////")
+    //print("///////////////////////////////////////////////")
     puntoMarcado = false
+    //print("Columna actual  \(colum)")
     while colum < 4 {
         print("Columna  \(colum)")
         print(" ------------------------------------")
         if colum < 4 {
             
-            print("hola \(colum)")
             if columnOcupada(colum) == false {//te da un error de out of index (el index daba 4)
+                
                 if choca(indexFila, colum) == false {
+                    print("no choca")
                     tablero[indexFila][colum] = 1
                     posiciones[indexFila] = colum
                     puntoMarcado = true
@@ -126,6 +128,7 @@ while indexFila < 4 {
                     indexFila -= 1
                     //aqui va funcion limpiar filas
                     indexFila = limpiarLineas(indexFila)
+                    print("Index actual despues de borrar  \(indexFila)")
                     //colum = 0
                 }
                 
@@ -138,8 +141,11 @@ while indexFila < 4 {
         print(tablero[3])
         
     }
-    indexFila += 1
+    indexFila += 1//no agarra cuando limpiarFilas disminuye el indexFila. Quizas sea por esto
+    colum = 0
+    print("Columna ahora vale  \(colum)")
     print("////////////////////////////////////////////////")
+    
 }
 
 
