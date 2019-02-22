@@ -126,7 +126,7 @@ while indexFila < 4 {
         
         print(" ------------------------------------")
         print("Columna  \(colum)")
-        if colum < 4 {
+        if puntoMarcado == false {
             
             if columnOcupada(colum) == false {//te da un error de out of index (el index daba 4)
                 
@@ -171,3 +171,6 @@ print(tablero[0])
 print(tablero[1])
 print(tablero[2])
 print(tablero[3])
+
+
+
