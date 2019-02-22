@@ -69,52 +69,16 @@ func choca (_ fila2:Int, _ column2:Int) -> Bool{
 }
 
 
-func limpiarLineas (_ fila1:Int) -> Int{
-    var filaIndex3:Int = fila1
-    var columnIndex3:Int = 0
-    var lleno:Bool = true
-    /*print("filaInedex3  \(filaIndex3)")
-    print("columnInedex3  \(columnIndex3)")*/
-    while lleno == true{
-        
-        columnIndex3 = posiciones[filaIndex3]
-        tablero[filaIndex3][columnIndex3] = 0
-        columnIndex3 += 1
-        
-        print("filaInedex3  \(filaIndex3)")
-        print("columnInedex3  \(columnIndex3)")
-        
-        if columnIndex3 < 4 {
-            lleno = false
-            
-            print("lleno  \(lleno)")
-            
-        } else {
-            
-            filaIndex3 -= 1
-            
-            print("filaInedex3 no lleno. \(filaIndex3)")
-            if filaIndex3 < 0 {
-                filaIndex3 = 0
-                columnIndex3 = 0
-                
-                
-                
-                print("filaInedex3 reiniciado  \(filaIndex3)")
-                print("columnInedex3 reiniciado \(columnIndex3)")
-                
-            }
-            
-        }
-    }
-    print("nuevo filaInedex3 \(filaIndex3)")
-    return filaIndex3
+func limpiarLineas () -> Void{
+    for indexY in 0...3 { for indexX in 0...3 {
+        tablero[indexY][indexX] = 0
+        } }
 }
 
 
 
 var indexFila:Int = 0
-
+var posicion1raFila:Int = 0
 
 
 while indexFila < 4 {
@@ -122,11 +86,11 @@ while indexFila < 4 {
     //print("///////////////////////////////////////////////")
     puntoMarcado = false
     //print("Columna actual  \(colum)")
-    while colum < 4 {
+    while puntoMarcado == false {
         
-        print(" ------------------------------------")
+        print("------------------------------------")
         print("Columna  \(colum)")
-        if puntoMarcado == false {
+        
             
             if columnOcupada(colum) == false {//te da un error de out of index (el index daba 4)
                 
@@ -135,7 +99,7 @@ while indexFila < 4 {
                     tablero[indexFila][colum] = 1
                     posiciones[indexFila] = colum
                     puntoMarcado = true
-                    colum = 4
+                    //colum = 4
                 }
             }
             
@@ -143,15 +107,19 @@ while indexFila < 4 {
                 colum += 1
                 
                 if colum == 4{
-                    indexFila -= 1
-                    //aqui va funcion limpiar filas
-                    indexFila = limpiarLineas(indexFila)
-                    print("Index actual despues de borrar  \(indexFila)")
-                    //colum = 0
-                } //else { indexFila += 1 }
+                    
+                    limpiarLineas()
+                    colum = posicion1raFila + 1
+                    //print("Columna ahora vale  \(colum)")
+                    indexFila = 0
+                }
                 
-            }// else {indexFila += 1}
+            } else if indexFila == 0 {
+                posicion1raFila = colum
+                //print("priemra fila se ubica en  \(posicion1raFila)")
+                
         }
+        
         
         print(tablero[0])
         print(tablero[1])
@@ -159,7 +127,7 @@ while indexFila < 4 {
         print(tablero[3])
         
     }
-    indexFila += 1//no agarra cuando limpiarFilas disminuye el indexFila. Quizas sea por esto
+    indexFila += 1
     colum = 0
     print("Columna ahora vale  \(colum)")
     print("////////////////////////////////////////////////")
